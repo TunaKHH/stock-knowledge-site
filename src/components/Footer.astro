@@ -1,0 +1,19 @@
+---
+// 沿用 Starlight 預設頁尾(上一頁/下一頁、最後更新等),再附上免責聲明。
+import Default from '@astrojs/starlight/components/Footer.astro';
+---
+
+<Default><slot /></Default>
+
+<p class="disclaimer">本站為個人學習筆記,非投資建議。</p>
+
+<style>
+	.disclaimer {
+		margin-top: 1.5rem;
+		padding-top: 1rem;
+		border-top: 1px solid var(--sl-color-gray-5);
+		font-size: var(--sl-text-xs);
+		color: var(--sl-color-gray-3);
+		text-align: center;
+	}
+</style>
