@@ -27,6 +27,10 @@ export default defineConfig({
 					label: '基本面與技術面',
 					items: [{ autogenerate: { directory: '基本面與技術面' } }],
 				},
+				{
+					label: '金融商品與機制',
+					items: [{ autogenerate: { directory: '金融商品與機制' } }],
+				},
 			],
 			// 覆寫頁尾以加入「非投資建議」聲明。
 			components: {
