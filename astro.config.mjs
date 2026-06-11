@@ -31,6 +31,10 @@ export default defineConfig({
 					label: '金融商品與機制',
 					items: [{ autogenerate: { directory: '金融商品與機制' } }],
 				},
+				{
+					label: '風險與資產配置',
+					items: [{ autogenerate: { directory: '風險與資產配置' } }],
+				},
 			],
 			// 覆寫頁尾以加入「非投資建議」聲明。
 			components: {
