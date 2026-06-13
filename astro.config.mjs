@@ -24,6 +24,10 @@ export default defineConfig({
 			// 側欄按主題分類;每開一個新主題就在這裡加一條 autogenerate。
 			sidebar: [
 				{
+					label: '投資地基(先讀這裡)',
+					items: [{ autogenerate: { directory: '投資地基' } }],
+				},
+				{
 					label: '基本面與技術面',
 					items: [{ autogenerate: { directory: '基本面與技術面' } }],
 				},
