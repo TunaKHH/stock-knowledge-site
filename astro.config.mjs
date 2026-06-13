@@ -35,6 +35,10 @@ export default defineConfig({
 					label: '風險與資產配置',
 					items: [{ autogenerate: { directory: '風險與資產配置' } }],
 				},
+				{
+					label: '選股策略與回測',
+					items: [{ autogenerate: { directory: '選股策略與回測' } }],
+				},
 			],
 			// 覆寫頁尾以加入「非投資建議」聲明。
 			components: {
