@@ -27,30 +27,37 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: '投資地基(先讀這裡)',
+					collapsed: true,
 					items: [{ autogenerate: { directory: '投資地基' } }],
 				},
 				{
 					label: '基本面與技術面',
+					collapsed: true,
 					items: [{ autogenerate: { directory: '基本面與技術面' } }],
 				},
 				{
 					label: '金融商品與機制',
+					collapsed: true,
 					items: [{ autogenerate: { directory: '金融商品與機制' } }],
 				},
 				{
 					label: '風險與資產配置',
+					collapsed: true,
 					items: [{ autogenerate: { directory: '風險與資產配置' } }],
 				},
 				{
 					label: '總體經濟',
+					collapsed: true,
 					items: [{ autogenerate: { directory: '總體經濟' } }],
 				},
 				{
 					label: '選股策略與回測',
+					collapsed: true,
 					items: [{ autogenerate: { directory: '選股策略與回測' } }],
 				},
 				{
 					label: '產業知識',
+					collapsed: true,
 					items: [{ autogenerate: { directory: '產業知識' } }],
 				},
 			],
