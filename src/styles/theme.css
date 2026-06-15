@@ -1,0 +1,97 @@
+/*
+ * 投資知識筆記 — 設計系統(編輯感 / 紙感)
+ * 覆寫 Starlight 的 --sl-* 變數。完整理念見 repo 根目錄 DESIGN.md。
+ * 美學:暖紙底 + 襲線標題 + 單一墨綠 accent。克制裝飾,字與留白做主角。
+ */
+
+:root {
+	/* 字型:內文系統黑體(中文不另載大檔),拉丁配 DM Sans */
+	--sl-font:
+		'DM Sans', system-ui, -apple-system, 'PingFang TC', 'Microsoft JhengHei',
+		'Noto Sans TC', 'Helvetica Neue', sans-serif;
+	--sl-font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+	/* 標題用襲線體(拉丁 Fraunces + 中文 Noto Serif TC) */
+	--font-display: 'Fraunces', 'Noto Serif TC', Georgia, '思源宋體', serif;
+
+	/* 閱讀寬鬆度 */
+	--sl-line-height: 1.5;
+}
+
+/* ── 亮色:暖紙 ───────────────────────────────────────── */
+:root[data-theme='light'] {
+	--sl-color-accent-low: #d9e7e0;
+	--sl-color-accent: #2f5d4e;
+	--sl-color-accent-high: #1f3f34;
+	--sl-color-text-accent: #2f5d4e;
+
+	--sl-color-white: #1f2421; /* Starlight 把 white 當「最強前景」,反轉成深墨 */
+	--sl-color-gray-1: #2b302c;
+	--sl-color-gray-2: #41463f;
+	--sl-color-gray-3: #6b6b63; /* 次要文字 */
+	--sl-color-gray-4: #8d8d83;
+	--sl-color-gray-5: #d9d5c9; /* 細線 */
+	--sl-color-gray-6: #efeae0;
+	--sl-color-gray-7: #f4f1ea;
+	--sl-color-black: #faf8f3; /* 「最弱背景」反轉成暖紙 */
+
+	--sl-color-bg: #faf8f3;
+	--sl-color-bg-nav: #f4f1ea;
+	--sl-color-bg-sidebar: #f4f1ea;
+	--sl-color-bg-inline-code: #efeae0;
+	--sl-color-hairline: #e4dfd2;
+	--sl-color-text: #1f2421;
+}
+
+/* ── 暗色:暖調深底 ───────────────────────────────────── */
+:root[data-theme='dark'] {
+	--sl-color-accent-low: #16302a;
+	--sl-color-accent: #7fb3a0;
+	--sl-color-accent-high: #cfe6dd;
+	--sl-color-text-accent: #7fb3a0;
+
+	--sl-color-bg: #14171a;
+	--sl-color-bg-nav: #181c20;
+	--sl-color-bg-sidebar: #181c20;
+	--sl-color-text: #e8e6df;
+}
+
+/* ── 標題:襲線體 ─────────────────────────────────────── */
+.sl-markdown-content :is(h1, h2, h3, h4),
+h1.astro-route-announcer,
+.content-panel h1,
+site-title,
+.site-title {
+	font-family: var(--font-display);
+	font-optical-sizing: auto;
+	letter-spacing: -0.01em;
+}
+
+/* 文章標題大一點、編輯感 */
+.sl-markdown-content h1:first-child,
+.content-panel > h1 {
+	font-weight: 600;
+	line-height: 1.15;
+}
+
+/* ── 長文閱讀:行高與段距 ───────────────────────────── */
+.sl-markdown-content {
+	line-height: 1.85;
+	font-size: var(--sl-text-base);
+}
+.sl-markdown-content p,
+.sl-markdown-content li {
+	letter-spacing: 0.01em; /* 中文略開,呼吸感 */
+}
+
+/* 表格數字對齊(報酬率 / 殖利率) */
+.sl-markdown-content table {
+	font-variant-numeric: tabular-nums;
+}
+
+/* 引用區塊:墨綠左邊線,克制 */
+.sl-markdown-content blockquote {
+	border-inline-start: 3px solid var(--sl-color-accent);
+	font-style: normal;
+	color: var(--sl-color-gray-2);
+}

@@ -11,6 +11,8 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: '投資知識筆記',
+			// 設計系統(編輯感 / 紙感):覆寫 --sl-* 變數,理念見根目錄 DESIGN.md。
+			customCss: ['./src/styles/theme.css'],
 			// 單一語系:用 root locale,網址不帶 /en 前綴,<html lang> = zh-TW。
 			defaultLocale: 'root',
 			locales: {
@@ -53,6 +55,17 @@ export default defineConfig({
 			head: [
 				{ tag: 'meta', attrs: { property: 'og:image', content: `${site}/og-default.png` } },
 				{ tag: 'meta', attrs: { name: 'twitter:image', content: `${site}/og-default.png` } },
+				// 設計系統字型:標題襲線(Fraunces / Noto Serif TC)、內文 DM Sans、程式碼 JetBrains Mono。
+				// 中文襲線(Noto Serif TC)由 Google Fonts 依字元動態子集,只載標題用得到的字。
+				{ tag: 'link', attrs: { rel: 'preconnect', href: 'https://fonts.googleapis.com' } },
+				{ tag: 'link', attrs: { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true } },
+				{
+					tag: 'link',
+					attrs: {
+						rel: 'stylesheet',
+						href: 'https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=JetBrains+Mono:wght@400;600&family=Noto+Serif+TC:wght@600;700&display=swap',
+					},
+				},
 				{
 					tag: 'link',
 					attrs: {
