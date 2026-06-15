@@ -1,0 +1,62 @@
+---
+// 沿用 Starlight 預設站名,再於右側補上「主分類」導覽列。
+// 分類首頁是各資料夾的 index.md;新增主分類時在 categories 加一條即可。
+import Default from '@astrojs/starlight/components/SiteTitle.astro';
+
+// 上方只放 3-4 個「入口型」主分類;長尾分類靠左側 sidebar。
+// 要換哪幾個進上方,改這個陣列即可(只放有文章的分類)。
+const categories = [
+	{ label: '投資地基', href: '/投資地基/' },
+	{ label: '金融商品與機制', href: '/金融商品與機制/' },
+	{ label: '選股策略與回測', href: '/選股策略與回測/' },
+	{ label: '產業知識', href: '/產業知識/' },
+];
+
+// 當前路徑(已解碼)用來標示 active 分類。
+const path = decodeURIComponent(Astro.url.pathname);
+const isActive = (href: string) => path.startsWith(href);
+---
+
+<Default><slot /></Default>
+
+<nav class="top-nav" aria-label="主分類">
+	{
+		categories.map((c) => (
+			<a href={c.href} aria-current={isActive(c.href) ? 'page' : undefined}>
+				{c.label}
+			</a>
+		))
+	}
+</nav>
+
+<style>
+	.top-nav {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+		margin-inline-start: 1.25rem;
+		padding-inline-start: 1.25rem;
+		/* 與站名之間一條細分隔線 */
+		border-inline-start: 1px solid var(--sl-color-hairline, var(--sl-color-gray-5));
+	}
+	.top-nav a {
+		color: var(--sl-color-gray-2);
+		text-decoration: none;
+		font-size: var(--sl-text-sm);
+		white-space: nowrap;
+		transition: color 0.15s ease;
+	}
+	.top-nav a:hover {
+		color: var(--sl-color-text-accent);
+	}
+	.top-nav a[aria-current='page'] {
+		color: var(--sl-color-text-accent);
+		font-weight: 600;
+	}
+	/* 空間不夠時整條收起,改由左側 sidebar 導覽(避免擠壓搜尋框)。 */
+	@media (max-width: 80rem) {
+		.top-nav {
+			display: none;
+		}
+	}
+</style>

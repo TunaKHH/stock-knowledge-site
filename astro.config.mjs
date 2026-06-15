@@ -45,10 +45,15 @@ export default defineConfig({
 					label: '選股策略與回測',
 					items: [{ autogenerate: { directory: '選股策略與回測' } }],
 				},
+				{
+					label: '產業知識',
+					items: [{ autogenerate: { directory: '產業知識' } }],
+				},
 			],
-			// 覆寫頁尾以加入「非投資建議」聲明。
+			// 覆寫頁尾(免責聲明)與站名(右側加主分類導覽列)。
 			components: {
 				Footer: './src/components/Footer.astro',
+				SiteTitle: './src/components/SiteTitle.astro',
 			},
 			// 分享 meta:Starlight 預設已輸出 og:title/description 與 twitter:card,
 			// 這裡補上預設分享圖與 RSS 連結。
