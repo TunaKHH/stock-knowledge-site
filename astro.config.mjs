@@ -42,6 +42,10 @@ export default defineConfig({
 					items: [{ autogenerate: { directory: '風險與資產配置' } }],
 				},
 				{
+					label: '總體經濟',
+					items: [{ autogenerate: { directory: '總體經濟' } }],
+				},
+				{
 					label: '選股策略與回測',
 					items: [{ autogenerate: { directory: '選股策略與回測' } }],
 				},
