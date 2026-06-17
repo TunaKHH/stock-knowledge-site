@@ -1,0 +1,56 @@
+---
+// 列出某分類底下已發佈的文章,給分類首頁(index)當導覽樞紐用。
+import { getCategoryArticles } from '../lib/categoryArticles';
+
+interface Props {
+	dir: string;
+}
+const { dir } = Astro.props;
+const articles = await getCategoryArticles(dir);
+---
+
+{
+	articles.length > 0 ? (
+		<ul class="cat-list not-content">
+			{articles.map((a) => (
+				<li>
+					<a href={a.href}>{a.title}</a>
+					{a.description && <p>{a.description}</p>}
+				</li>
+			))}
+		</ul>
+	) : (
+		<p class="cat-empty">這個分類還在醞釀,文章陸續補上。</p>
+	)
+}
+
+<style>
+	.cat-list {
+		list-style: none;
+		padding: 0;
+		margin: 1.5rem 0 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+	.cat-list li {
+		padding: 0.85rem 1rem;
+		border: 1px solid var(--sl-color-hairline, var(--sl-color-gray-5));
+		border-radius: 0.5rem;
+		background: var(--sl-color-bg-nav);
+	}
+	.cat-list a {
+		font-weight: 600;
+		text-decoration: none;
+	}
+	.cat-list p {
+		margin: 0.35rem 0 0;
+		font-size: var(--sl-text-sm);
+		color: var(--sl-color-gray-3);
+		line-height: 1.6;
+	}
+	.cat-empty {
+		margin-top: 1.5rem;
+		color: var(--sl-color-gray-3);
+	}
+</style>

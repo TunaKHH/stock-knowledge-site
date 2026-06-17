@@ -1,13 +1,62 @@
 ---
-// 沿用 Starlight 預設頁尾(上一頁/下一頁、最後更新等),再附上免責聲明。
+// 沿用 Starlight 預設頁尾(上一頁/下一頁、最後更新等),再加:
+//   1. 文章頁自動列出「本分類其他文章」(站內交叉連結,零手工維護)
+//   2. 全站免責聲明
 import Default from '@astrojs/starlight/components/Footer.astro';
+import { getCategoryArticles } from '../lib/categoryArticles';
+
+const route = Astro.locals.starlightRoute;
+const id = route.entry.id; // 例:'投資地基/複利為什麼時間是你最強的隊友'
+const seg = id.split('/');
+const dir = seg.length > 1 ? seg[0] : null;
+// 只在「分類底下的真文章」顯示;首頁、分類 index、草稿都跳過。
+const isLeafArticle = dir && seg.length > 1 && !id.endsWith('/index') && !route.entry.data.draft;
+const related = isLeafArticle ? await getCategoryArticles(dir, { excludeId: id }) : [];
 ---
+
+{
+	related.length > 0 && (
+		<nav class="related not-content" aria-label="本分類其他文章">
+			<h2>本分類其他文章</h2>
+			<ul>
+				{related.map((a) => (
+					<li>
+						<a href={a.href}>{a.title}</a>
+					</li>
+				))}
+			</ul>
+		</nav>
+	)
+}
 
 <Default><slot /></Default>
 
 <p class="disclaimer">本站為個人學習筆記,非投資建議。</p>
 
 <style>
+	.related {
+		margin-top: 2.5rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--sl-color-hairline, var(--sl-color-gray-5));
+	}
+	.related h2 {
+		font-size: var(--sl-text-h5);
+		margin: 0 0 0.75rem;
+	}
+	.related ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+	}
+	.related a {
+		text-decoration: none;
+	}
+	.related a:hover {
+		color: var(--sl-color-text-accent);
+	}
 	.disclaimer {
 		margin-top: 1.5rem;
 		padding-top: 1rem;
