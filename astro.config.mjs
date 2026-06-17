@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import remarkCjkFriendly from 'remark-cjk-friendly';
 
 // 部署後請把這裡換成正式 Vercel 網域(canonical / RSS 絕對網址靠它)。
 const site = 'https://stock-knowledge-site.vercel.app';
@@ -8,6 +9,10 @@ const site = 'https://stock-knowledge-site.vercel.app';
 // https://astro.build/config
 export default defineConfig({
 	site,
+	// CJK 友善的強調解析:讓 **「…」** 這種緊貼全形標點的粗體能正確開合。
+	markdown: {
+		remarkPlugins: [remarkCjkFriendly],
+	},
 	integrations: [
 		starlight({
 			title: '投資知識筆記',
