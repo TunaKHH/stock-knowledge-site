@@ -1,6 +1,6 @@
 # 投資知識筆記
 
-用費曼學習法把投資與股票知識「親手寫清楚」的個人筆記站。
+用費曼學習法把投資與股票知識「寫清楚、讀到懂」的個人筆記站(內文可 AI 代筆,但發佈前自己一定看懂)。
 技術:Astro **Starlight** + Markdown,部署在 **Vercel**(git push 自動部署)。
 
 > 設計與實作計畫見 `docs/plans/`。**本站為個人學習筆記,非投資建議。**
@@ -8,11 +8,11 @@
 ## 寫作循環(發佈流程)
 
 ```
-寫 .md  →  丟 AI 當編輯/反方挑毛病  →  修  →  git push  →  Vercel 自動上線  →  cross-post 分發
+寫 / 讓 AI 寫 .md  →  自己讀過 + AI 當反方挑毛病  →  修  →  git push  →  Vercel 自動上線  →  cross-post 分發
 ```
 
 1. 在 `src/content/docs/<主題>/` 新增或編輯 `.md`。frontmatter:`title` / `description` / `pubDate`,草稿加 `draft: true`(不會上線)。
-2. 寫完把 `draft: true` 拿掉。**內文一律自己寫**——AI 只當編輯/反方,不代筆。
+2. **內文可由 AI 代筆**,但發佈前你一定要自己讀懂、看過、認可——你是作者,不是貼上就算。AI 也繼續當編輯/反方挑毛病。寫完把 `draft: true` 拿掉。
 3. `git push` → Vercel 自動 build & deploy。
 4. **分發(逼迫感來源,別省)**:把連結 + 重點貼到 Threads / X;可選 cross-post 到方格子,並在那邊把 canonical(原文連結)設回本站。
 
