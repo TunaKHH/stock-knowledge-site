@@ -23,3 +23,7 @@ pnpm-debug.log*
 .DS_Store
 .vercel
 .gstack/
+
+# 全域 gitignore 排除 .claude/,但專案層級 skill 要進版控,放行
+!.claude/
+!.claude/**
